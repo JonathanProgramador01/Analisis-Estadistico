@@ -1,0 +1,45 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Estadisticas Basicas{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='dashboard/estadisticas_basicas.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+
+{%block heading %}Estadísticas Básicas {% endblock %}
+
+{% block content %}
+
+
+
+
+{% for statistics in prosesamiento.get_describe_statistics() %}
+
+<h2 class = "sour-gummy">{{statistics[0]}}</h2>
+
+<div class="targeta sour-gummy">
+<h3>Count: {{statistics[1]}}</h3>
+<h3>Media: {{statistics[2]}}</h3>
+<h3>Mediana: {{statistics[3]}}</h3>
+<h3>Moda: {{statistics[4]}}</h3>
+<h3>Desviación estandar: {{statistics[5]}}</h3>
+<h3>Varianza: {{statistics[6]}}</h3>
+<h3>Min: {{statistics[7]}}</h3>
+<h3>Máx: {{statistics[8]}}</h3>
+<h3>25%: {{statistics[9]}}</h3>
+<h3>50%: {{statistics[10]}}</h3>
+<h3>75%: {{statistics[11]}}</h3>
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock %}

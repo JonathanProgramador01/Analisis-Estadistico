@@ -1,0 +1,23 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Diagramas de Cajas{% endblock %}
+{%block heading %}Diagramas de Cajas{% endblock %}
+{% block content %}
+
+
+{% for box in prosesamiento.get_box() %}
+
+
+
+{{box | safe}}
+<br><br><br>
+
+
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock %}

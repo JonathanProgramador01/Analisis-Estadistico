@@ -1,0 +1,26 @@
+
+{% extends "dashboard/base.html" %}
+{% block title %}Histogramas{% endblock %}
+
+{% block heading %}Histogramas {% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+<div>
+    <!-- Aquí se renderiza el gráfico -->
+    {%for grafica in prosesamiento.get_histogramas()%}
+        
+    {{grafica | safe}}
+    <br><br><br>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
+

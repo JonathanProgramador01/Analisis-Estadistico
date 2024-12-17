@@ -1,0 +1,23 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Diagramas de Cajas{% endblock %}
+{%block heading %}Diagramas de Cajas{% endblock %}
+{% block content %}
+
+
+{% for scatter in prosesamiento.get_scatter() %}
+
+
+
+{{scatter | safe}}
+<br><br><br>
+
+
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock %}

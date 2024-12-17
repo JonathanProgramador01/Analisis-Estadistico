@@ -1,0 +1,96 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Estadisticas Inferencial{% endblock %}
+
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='dashboard/estadisticas_basicas.css') }}">
+
+<style>
+
+
+
+    /* Contenedor de la tabla */
+    .table-container {
+        max-width: 95%; /* Controla el ancho máximo de la tabla */
+        margin: auto; /* Centra la tabla */
+        margin-left: 0px;
+        font-size: 12px; /* Reduce el tamaño de la fuente */
+    }
+    
+    /* Estilo general para la tabla */
+    .table.my-custom-table.forma {
+        background-color: #7b26f1 !important; /* Color de fondo general */
+        color: #ffffff !important; /* Color del texto */
+        table-layout: fixed; /* Fuerza columnas del mismo ancho */
+        word-wrap: break-word; /* Ajusta el texto dentro de las celdas */
+    }
+    
+    /* Estilo de las cabeceras */
+    .table.my-custom-table.forma th {
+        background-color: #060D3A !important; /* Color de fondo de las cabeceras */
+        color: #FB00E6 !important; /* Color del texto de cabeceras */
+        text-align: center; /* Centra el texto en las cabeceras */
+    }
+    
+    /* Colores alternados para filas */
+    .table.my-custom-table.forma tr:nth-child(even) {
+        background-color: #e715f6 !important; /* Color para filas pares */
+    }
+    
+    .table.my-custom-table.forma tr:nth-child(odd) {
+        background-color: #0101ee !important; /* Color para filas impares */
+    }
+    
+    
+    
+    /* Estilo de celdas */
+    .table.my-custom-table.forma td,
+    .table.my-custom-table.forma th {
+        border: 2px solid #9500ff !important; /* Bordes de celdas */
+        text-align: center !important; /* Centra el texto */
+        padding: 8px !important; /* Espaciado interno */
+    }
+    
+    </style>
+
+{% endblock %}
+{% block heading %}Estadísticas inferencial {% endblock %}
+
+{% block content %}
+
+
+{% for statistics in prosesamiento.get_statisticas_inferencial() %}
+<h2 class="sour-gummy">{{statistics[0]}}</h2>
+
+<div class="targeta sour-gummy">
+<h3>Estimación puntual de la media de los ingresos (Poblacion): {{statistics[1]}}</h3>
+<h3>Estimación puntual de la media de los ingresos (muestra): {{statistics[2]}}</h3>
+<h3>Desviacion estandar (Poblacion): {{statistics[3]}}</h3>
+<h3>Desviacion estandar (Muestra): {{statistics[4]}}</h3>
+<h3>Intervalo de confianza al 95% para la media de los ingresos: {{statistics[5]}} </h3>
+
+
+
+
+
+</div>
+
+{% endfor %}
+
+
+<h2>Analisis de Correlacion (Spearman)</h2>
+<div  class="table-container">
+    {{prosesamiento.get_correlacion_spearman()|safe}}
+</div>
+
+
+<h2>Analisis de Correlacion (Pearson)</h2>
+<div class="table-container">
+    {{prosesamiento.get_correlacion_pearson()|safe}}
+</div>
+
+
+
+
+
+
+
+{% endblock %}
